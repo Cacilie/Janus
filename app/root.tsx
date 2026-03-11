@@ -8,6 +8,8 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -33,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <MantineProvider>{children}</MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
