@@ -1,1 +1,0 @@
-import{w as t,p as e}from"./chunk-EPOLDU6W-CP3WDhNt.js";function r({}){return[{title:"Home"},{name:"description",content:"Welcome to Janus!"}]}const i=t(function(){return e.jsx("div",{children:e.jsx("h1",{children:"Home"})})});export{i as default,r as meta};
