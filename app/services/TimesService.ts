@@ -1,11 +1,6 @@
 import { JapiDBFactory } from "./JapiDBFactory";
 import { JapiDBService } from "./JapiDBService";
-
-export interface Time {
-  id: number;
-  totalTime: number;
-  date: string;
-}
+import { type Time } from "../Types/Time";
 
 export class TimesService {
   private times: Time[] = [];
@@ -15,6 +10,17 @@ export class TimesService {
   // Constructor is public now, but instance will be managed by Factory
   constructor() {
     this.japiDBService = JapiDBFactory.getJapiDBService();
+    this.loadTimes()
+  }
+
+  loadTimes() : void{
+    let savedTimes = this.japiDBService.getTimes()
+    this.setTimes(savedTimes)
+
+  }
+
+  setTimes(timesList : Time[]) : void {
+    this.times = [...timesList]
   }
 
   getTimes(): Time[] {
@@ -28,6 +34,7 @@ export class TimesService {
       date: new Date().toISOString(),
     };
     this.times.push(newTime);
+    this.japiDBService.pushTime(newTime);
     return newTime;
   }
 

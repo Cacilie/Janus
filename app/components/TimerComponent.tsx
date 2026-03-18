@@ -1,10 +1,5 @@
 import { Text, Paper, Stack } from "@mantine/core";
-
-interface TimerComponentProps {
-  minutes: number;
-  seconds: number;
-  chronoSeconds: number;
-}
+import { type TimerComponentProps } from "../Types/TimerComponent";
 
 export function TimerComponent({ minutes, seconds, chronoSeconds }: TimerComponentProps) {
   const formatChrono = (totalSec: number) => {
