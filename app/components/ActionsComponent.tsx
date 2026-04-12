@@ -1,19 +1,13 @@
 import { Button, Group, Paper } from "@mantine/core";
 import { IconPlayerPlay, IconPlayerPause, IconPlayerStop } from "@tabler/icons-react";
-import type { TimerState } from "../routes/home";
-
-interface ActionsComponentProps {
-  timerState: TimerState;
-  onStart: () => void;
-  onPause: () => void;
-  onStop: () => void;
-}
+import { type ActionsComponentProps } from "../Types/ActionsComponent";
+import { TimerState } from "../Types/TimerState";
 
 export function ActionsComponent({ timerState, onStart, onPause, onStop }: ActionsComponentProps) {
   return (
     <Paper p="xl" withBorder>
       <Group justify="center">
-        {timerState === "STOP" ? (
+        {timerState === TimerState.STOP ? (
           <Button 
             size="lg" 
             color="red" 
@@ -22,7 +16,7 @@ export function ActionsComponent({ timerState, onStart, onPause, onStop }: Actio
           >
             STOP
           </Button>
-        ) : timerState === "START" ? (
+        ) : timerState === TimerState.START ? (
           <Button 
             size="lg" 
             onClick={onStart} 
